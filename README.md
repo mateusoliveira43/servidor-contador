@@ -4,7 +4,7 @@ Servidor HTTP utilizando a linguagem [JavaScript] (juntamente com o [Node.js]) q
 
 # Tarefas
 
-- [ ] Usar gitflow para subir as alterações (enviar alterações para o ramo desenvolvimento e fazer merge com a master)
+- [X] Usar gitflow para subir as alterações (enviar alterações para o ramo desenvolvimento e fazer merge com a master)
 - [ ] Implementar algoritmo que escreve os números por extenso
 - [ ] Implementar o servidor
 - [ ] Escrever a seção como instalar e utilizar
