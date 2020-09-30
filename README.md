@@ -4,14 +4,17 @@ Servidor HTTP utilizando a linguagem [JavaScript] (juntamente com o [Node.js]) q
 
 # Tarefas
 
-- [ ] Usar Docker
-- [ ] Permitir acesso da conta da CERTI
-- [ ] Escrever como instalar e utilizar
-- [ ] Terminar de escrever a seção "Sobre o desenvolvimento"
-- [ ] Usar gitflow para subir as alterações
-- [ ] Fazer pull request na branch de desenvolvimento
+- [ ] Usar gitflow para subir as alterações (enviar alterações para o ramo desenvolvimento e fazer merge com a master)
 - [ ] Implementar algoritmo que escreve os números por extenso
+- [ ] Implementar o servidor
+- [ ] Escrever a seção como instalar e utilizar
 - [ ] Fazer testes unitários
+- [ ] Tratar os erros
+- [ ] Revisar o código e aplicar "Clean Code"
+- [ ] Terminar de escrever a seção "Sobre o desenvolvimento"
+- [ ] Usar Docker
+- [ ] Permitir acesso da conta da CERTI (seletivo-certi-cdm)
+- [ ] Fazer pull request na branch de desenvolvimento
 
 # Sobre o Desenvolvimento
 
