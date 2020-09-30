@@ -4,7 +4,7 @@
   "description": "Servidor HTTP utilizando o Node.js que retorna um arquivo JSON com o número inteiro escrito por extenso para requisições GET",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "dev": "nodemon server.js"
   },
   "repository": {
@@ -19,10 +19,17 @@
   },
   "homepage": "https://github.com/mateusoliveira43/servidor-contador#readme",
   "devDependencies": {
+    "@sucrase/jest-plugin": "^2.0.0",
     "eslint": "^7.10.0",
     "eslint-config-airbnb-base": "^14.2.0",
     "eslint-plugin-import": "^2.22.1",
+    "jest": "^26.4.2",
     "nodemon": "^2.0.4",
     "sucrase": "^3.15.0"
+  },
+  "jest": {
+    "transform": {
+      ".(js|jsx|ts|tsx)": "@sucrase/jest-plugin"
+    }
   }
 }
