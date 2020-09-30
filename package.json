@@ -1,0 +1,28 @@
+{
+  "name": "servidor-contador",
+  "version": "1.0.0",
+  "description": "Servidor HTTP utilizando o Node.js que retorna um arquivo JSON com o número inteiro escrito por extenso para requisições GET",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mateusoliveira43/servidor-contador.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mateusoliveira43/servidor-contador/issues"
+  },
+  "homepage": "https://github.com/mateusoliveira43/servidor-contador#readme",
+  "devDependencies": {
+    "eslint": "^7.10.0",
+    "eslint-config-airbnb-base": "^14.2.0",
+    "eslint-plugin-import": "^2.22.1",
+    "nodemon": "^2.0.4",
+    "sucrase": "^3.15.0"
+  }
+}
