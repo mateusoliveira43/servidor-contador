@@ -5,7 +5,7 @@ Servidor HTTP utilizando a linguagem [JavaScript] (juntamente com o [Node.js]) q
 # Tarefas
 
 - [X] Usar gitflow para subir as alterações (enviar alterações para o ramo desenvolvimento e fazer merge com a master)
-- [ ] Implementar algoritmo que escreve os números por extenso
+- [X] Implementar algoritmo que escreve os números por extenso
 - [ ] Implementar o servidor
 - [ ] Terminar de escrever a seção "Iniciando o Servidor"
 - [ ] Terminar de escrever a seção "Utlizando o Servidor"
@@ -45,7 +45,7 @@ Para o desafio, eu precisava criar um servidor HTTP, com a linguagem da minha pr
 
 Escolhi usar [JavaScript] junto com [Node.js], por achar que a tarefa seria mais simples do que se implementada utilizando [Python], que é a outra linguagem que tenho costume de trabalhar.
 
-Para o algoritmo de escrita do número por extenso, usei expressões regulares para a solução. Deixei que fossem enviados zeros a esquerda (tal que não ultrapasse 5 dígitos), mas fui rigoroso quanto aos sinais. O usuário só pode enviar um sinal de menos (-) (no início do path), enviando mais de um, ou sinais de mais (+), é apresentado um erro ao usuário de formato inválido. Outro ponto que vale resaltar, foi quanto as regras gramaticais. Uma em específico que vale a pena ressaltar, é que não se usa “e” entre milhares e centenas, a não ser que o número termine em centenas.
+Para o algoritmo de escrita do número por extenso, usei expressões regulares para a solução. Deixei que fossem enviados zeros a esquerda (tal que não ultrapasse 5 dígitos), mas fui rigoroso quanto aos sinais. O usuário só pode enviar um sinal de menos (-) (no início do path), enviando mais de um, ou sinais de mais (+), é apresentado um erro ao usuário de formato inválido. Para evitar colocar (ainda mais) `if`s (minha prioridade foi evitar ifs), minha ideia foi fazer os objetos com as nomenclaturas das ordens dos respectivos dígitos. Outro ponto que vale resaltar, foi quanto as regras gramaticais. Uma em específico que vale a pena ressaltar, é que não se usa “e” entre milhares e centenas, a não ser que o número termine em centenas. Queria ter feito o método `retornaRespostaConversao`, da classe `NumerosPorExtenso`, ser estático, mas o eslint ainda não suporta atributos estáticos (es7) (sem a instalação do Babel).
 
 Para a parte de testes unitários, usei [Jest] junto com [Sucrase] (para poder usar import/export). Não havia trabalhado com testes unitários em JavaScript antes, escolhi o Jest por ser o mais indicado nas pesquisas que fiz.
 

@@ -1,4 +1,4 @@
-import retornaRespostaServidor from './numerosPorExtenso';
+import NumeroPorExtenso from './NumerosPorExtenso';
 
 const testes = {
   a: false,
@@ -24,10 +24,18 @@ const testes = {
   100: 'cem',
   101: 'cento e um',
   1100: 'mil e cem',
+  20000: 'vinte mil',
+  99999: 'noventa e nove mil novecentos e noventa e nove',
+  12345: 'doze mil trezentos e quarenta e cinco',
+  12: 'doze',
+  19: 'dezenove',
+  8307: 'oito mil trezentos e sete',
+  30001: 'trinta mil e um',
 };
 
 Object.entries(testes).forEach(([entrada, saida]) => {
+  const numeroPorExtenso = new NumeroPorExtenso(entrada);
   test(`passando "${entrada}" como parametro, deve retornar "${saida}"`, () => {
-    expect(retornaRespostaServidor(entrada)).toBe(saida);
+    expect(numeroPorExtenso.retornaRespostaConversao()).toBe(saida);
   });
 });
