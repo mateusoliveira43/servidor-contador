@@ -25,6 +25,12 @@ npm i
 ```
 para instalar as dependências do projeto.
 
+Na pasta do projeto, use o seguinte comando no terminal
+```bash
+npm run server
+```
+para iniciar o servidor.
+
 # Usando o Servidor
 
 Na pasta do projeto, use o seguinte comando no terminal
@@ -57,7 +63,7 @@ Ao acessar `http://localhost:3000/-1042`, o servidor retorna
 
 Ao acessar `http://localhost:3000/94587`, o servidor retorna
 ```
-{ "extenso": "noventa e quatro mil e quinhentos e oitenta e sete" }
+{ "extenso": "noventa e quatro mil quinhentos e oitenta e sete" }
 ```
 
 [Node.js]: https://nodejs.org/
