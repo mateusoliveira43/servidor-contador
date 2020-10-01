@@ -17,7 +17,7 @@ Servidor HTTP utilizando a linguagem [JavaScript] (juntamente com o [Node.js]) q
 - [ ] Permitir acesso da conta da CERTI (seletivo-certi-cdm)
 - [ ] Fazer pull request na branch de desenvolvimento
 
-# Inicaiando o Projeto
+# Iniciando o Projeto
 
 Na pasta do projeto, use o seguinte comando no terminal
 ```bash
@@ -39,7 +39,7 @@ Para o desafio, eu precisava criar um servidor HTTP, com a linguagem da minha pr
 
 Escolhi usar [JavaScript] junto com [Node.js], por achar que a tarefa seria mais simples do que se implementada utilizando [Python], que é a outra linguagem que tenho costume de trabalhar.
 
-Para o algoritmo de escrita do número por extenso, usei expressões regulares para a solução. Deixei que fossem enviados zeros a esquerda (tal que não ultrapasse 5 dígitos), mas fui rigoroso quanto aos sinais. O usuário só pode enviar um sinal de menos (-), enviando mais de um, ou sinais de mais (+), é apresentado um erro ao usuário de formato inválido.
+Para o algoritmo de escrita do número por extenso, usei expressões regulares para a solução. Deixei que fossem enviados zeros a esquerda (tal que não ultrapasse 5 dígitos), mas fui rigoroso quanto aos sinais. O usuário só pode enviar um sinal de menos (-) (no início do path), enviando mais de um, ou sinais de mais (+), é apresentado um erro ao usuário de formato inválido. Outro ponto que vale resaltar, foi quanto as regras gramaticais. Uma em específico que vale a pena ressaltar, é que não se usa “e” entre milhares e centenas, a não ser que o número termine em centenas.
 
 Para a parte de testes unitários, usei [Jest] junto com [Sucrase] (para poder usar import/export). Não havia trabalhado com testes unitários em JavaScript antes, escolhi o Jest por ser o mais indicado nas pesquisas que fiz.
 

@@ -68,6 +68,22 @@ test('passando "-01042" como parametro, deve retornar "menos mil e quarenta e do
   expect(retornaRespostaServidor('-01042')).toBe('menos mil e quarenta e dois');
 });
 
-test('passando "94587" como parametro, "deve retornar noventa e quatro mil e quinhentos e oitenta e sete"', () => {
-  expect(retornaRespostaServidor('94587')).toBe('noventa e quatro mil e quinhentos e oitenta e sete');
+test('passando "94587" como parametro, "deve retornar noventa e quatro mil quinhentos e oitenta e sete"', () => {
+  expect(retornaRespostaServidor('94587')).toBe('noventa e quatro mil quinhentos e oitenta e sete');
+});
+
+test('passando "94500" como parametro, "deve retornar noventa e quatro mil e quinhentos"', () => {
+  expect(retornaRespostaServidor('94500')).toBe('noventa e quatro mil e quinhentos');
+});
+
+test('passando "200" como parametro, "duzentos"', () => {
+  expect(retornaRespostaServidor('200')).toBe('duzentos');
+});
+
+test('passando "100" como parametro, "cem"', () => {
+  expect(retornaRespostaServidor('100')).toBe('cem');
+});
+
+test('passando "1100" como parametro, "mil e cem"', () => {
+  expect(retornaRespostaServidor('1100')).toBe('mil e cem');
 });
