@@ -64,11 +64,11 @@ para rodar os testes unitários.
 
 # Sobre o Desenvolvimento
 
-Para o desafio, eu precisava criar um servidor HTTP, com a linguagem da minha preferência, em até 7 dias que, para cada requisição GET, retornasse um arquivo JSON com chave extenso e valor o número inteiro escrito por extenso (contido no intervalo [-99999, 99999]), enviado no path.
+Para o desafio, eu precisava criar um servidor HTTP, com a linguagem da minha preferência, em até 7 dias que, para cada requisição GET, retornasse um arquivo JSON com chave extenso e valor o número inteiro escrito por extenso (contido no intervalo [-99999, 99999]), enviado como parâmetro de URL.
 
-Escolhi usar [JavaScript] junto com [Node.js], por achar que a tarefa seria mais simples do que se implementada utilizando [Python], que é a outra linguagem que tenho costume de trabalhar.
+Escolhi usar [JavaScript] junto com [Node.js], por achar que a tarefa seria mais simples do que se implementada utilizando [Python], que é a outra linguagem que tenho costume de trabalhar (no caso, usaria o framework [FastAPI] para o desnvolvimento).
 
-Para o algoritmo de escrita do número por extenso, usei expressões regulares para a solução. Deixei que fossem enviados zeros a esquerda (tal que não ultrapasse 5 dígitos), mas fui rigoroso quanto aos sinais. O usuário só pode enviar um sinal de menos (-) (no início do path), enviando mais de um, ou sinais de mais (+), é apresentado um erro ao usuário de formato inválido. Para evitar colocar (ainda mais) `if`s (minha prioridade foi evitar ifs), minha ideia foi fazer os objetos com as nomenclaturas das ordens dos respectivos dígitos. Outro ponto que vale resaltar, foi quanto as regras gramaticais. Uma em específico que vale a pena ressaltar, é que não se usa “e” entre milhares e centenas, a não ser que o número termine em centenas. Queria ter feito o método `retornaRespostaConversao`, da classe `NumerosPorExtenso`, ser estático, mas o eslint ainda não suporta atributos estáticos (es7) (sem a instalação do Babel).
+Para o algoritmo de escrita do número por extenso, usei expressões regulares para a solução. Deixei que fossem enviados zeros a esquerda (tal que não ultrapasse 5 dígitos), mas fui rigoroso quanto aos sinais. O usuário só pode enviar um sinal de menos (-) (no início do parâmetro da URL). Enviando mais de um, ou sinais de mais (+), é apresentado um erro ao usuário de formato inválido, explicando qual foi o problema. Para evitar colocar (ainda mais) `if`s (minha prioridade foi evitar ifs), minha ideia foi fazer os objetos com as nomenclaturas das ordens dos respectivos dígitos. Outro ponto que vale resaltar, foi quanto as regras gramaticais. Uma em específico que vale a pena ressaltar, é que não se usa “e” entre milhares e centenas, a não ser que o número termine em centenas. Queria ter feito o método `retornaRespostaConversao`, da classe `NumerosPorExtenso`, ser estático, mas o eslint ainda não suporta atributos estáticos (es7).
 
 Eu quis segui o padrão do *gitflow* para o projeto, mas acabei fazendo um `merge` da develop na master no começo do projeto ao invés de um `rebase` e `squash`. Após esse erro, comecei a utilizar o sistema de *pull requests* do GitHub.
 
@@ -79,3 +79,4 @@ Para a parte de testes unitários, usei [Jest] junto com [Sucrase] (para poder u
 [Python]: https://www.python.org/
 [Jest]: https://jestjs.io/en/
 [Sucrase]: https://sucrase.io/
+[FastAPI]: https://fastapi.tiangolo.com/
