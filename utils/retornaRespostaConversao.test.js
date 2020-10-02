@@ -31,6 +31,7 @@ const testes = {
   19: 'dezenove',
   8307: 'oito mil trezentos e sete',
   30001: 'trinta mil e um',
+  '1a': false,
 };
 
 Object.entries(testes).forEach(([entrada, saida]) => {

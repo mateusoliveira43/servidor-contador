@@ -11,7 +11,7 @@ Servidor HTTP utilizando a linguagem [JavaScript] (juntamente com o [Node.js]) q
 - [ ] Terminar de escrever a seção "Iniciando o Servidor"
 - [ ] Terminar de escrever a seção "Utlizando o Servidor"
 - [X] Fazer testes unitários
-- [ ] Fazer funcionar os testes do servidor
+- [X] Fazer funcionar os testes do servidor
 - [X] Tratar os erros
 - [ ] Revisar o código e aplicar "Clean Code"
 - [ ] Terminar de escrever a seção "Sobre o desenvolvimento"
