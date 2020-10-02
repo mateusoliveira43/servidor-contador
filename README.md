@@ -26,7 +26,7 @@ Na pasta do projeto, use o seguinte comando no terminal
 ```bash
 docker build --tag servidor-contador-docker .
 ```
-para criar a imagem do projeto (se você não deu permisão ao usuário root, vai preciar rodar este, e os demais comandos, do docker com sudo na frente deles).
+para criar a imagem do projeto (se você não deu permisão ao usuário root, vai preciar rodar este, e os demais comandos do docker, com sudo na frente deles).
 
 Na pasta do projeto, use o seguinte comando no terminal
 ```bash
@@ -103,11 +103,11 @@ Escolhi usar [JavaScript] junto com [Node.js], por achar que a tarefa seria mais
 
 Para o algoritmo de escrita do número por extenso, usei expressões regulares para a solução. Deixei que fossem enviados zeros a esquerda (tal que não ultrapasse 5 dígitos), mas fui rigoroso quanto aos sinais. O usuário só pode enviar um sinal de menos (-) (no início do parâmetro da URL). Enviando mais de um, ou sinais de mais (+), é apresentado um erro ao usuário de formato inválido, explicando qual foi o problema. Para evitar colocar (ainda mais) `if`s (minha prioridade foi evitar ifs), minha ideia foi fazer os objetos com as nomenclaturas das ordens dos respectivos dígitos. Outro ponto que vale resaltar, foi quanto as regras gramaticais. Uma em específico que vale a pena ressaltar, é que não se usa “e” entre milhares e centenas, a não ser que o número termine em centenas. Queria ter feito o método `retornaRespostaConversao`, da classe `NumerosPorExtenso`, ser estático, mas o eslint ainda não suporta atributos estáticos (es7).
 
-Eu quis segui o padrão do *gitflow* para o projeto, mas acabei fazendo um `merge` da develop na master no começo do projeto ao invés de um `rebase` e `squash`. Após esse erro, comecei a utilizar o sistema de *pull requests* do GitHub.
+Eu quis seguir o padrão do *gitflow* para o projeto, mas acabei fazendo um `merge` da develop na master no começo do projeto ao invés de um `rebase` e `squash`. Após esse erro, comecei a utilizar o sistema de *pull requests* do GitHub.
 
 Para a parte de testes unitários, usei [Jest] junto com [Sucrase] (para poder usar import/export). Não havia trabalhado com testes unitários em JavaScript antes, escolhi o Jest por ser o mais indicado nas pesquisas que fiz.
 
-Dei a possibilidade do usuário usar [Docker] para instalação e uso do projeto. Foi minha primeira vez que eu o utilizei, talvez pudesse ter feito algo melhor em relação a isto (além de fornecer uma maneira do usuários rodar os testes unitários, o usando).
+Dei a possibilidade do usuário usar [Docker] para instalação e uso do projeto. Foi a primeira vez que o utilizei, talvez pudesse ter feito algo melhor em relação a isto (além de fornecer uma maneira do usuário rodar os testes unitários).
 
 [Node.js]: https://nodejs.org/
 [JavaScript]: https://www.javascript.com/
