@@ -8,18 +8,45 @@ Servidor HTTP utilizando a linguagem [JavaScript] (juntamente com o [Node.js]) q
 - [X] Implementar algoritmo que escreve os números por extenso
 - [X] Implementar o servidor
 - [X] Enviar mensagens explicativas de erro ao usuário
-- [ ] Terminar de escrever a seção "Iniciando o Servidor"
-- [ ] Terminar de escrever a seção "Utlizando o Servidor"
+- [X] Terminar de escrever a seção "Iniciando o Projeto e Usando o Servidor"
 - [X] Fazer testes unitários
 - [X] Fazer funcionar os testes do servidor
 - [X] Tratar os erros
 - [ ] Revisar o código e aplicar "Clean Code"
-- [ ] Terminar de escrever a seção "Sobre o desenvolvimento"
-- [ ] Usar Docker
+- [X] Terminar de escrever a seção "Sobre o desenvolvimento"
+- [X] Usar Docker
 - [ ] Permitir acesso da conta da CERTI (seletivo-certi-cdm)
-- [ ] Fazer pull request na branch de desenvolvimento
+- [ ] Fazer pull request na branch de desenvolvimento: Correção de Erros
 
-# Iniciando o Projeto
+# Iniciando o Projeto e Usando o Servidor
+
+## Usando Docker
+
+Na pasta do projeto, use o seguinte comando no terminal
+```bash
+docker build --tag servidor-contador-docker .
+```
+para criar a imagem do projeto (se você não deu permisão ao usuário root, vai preciar rodar este, e os demais comandos, do docker com sudo na frente deles).
+
+Na pasta do projeto, use o seguinte comando no terminal
+```bash
+docker run -p 3000:3000 servidor-contador-docker
+```
+para iniciar o servidor, que irá escutar na porta `3000`. Você pode clicar no link que aparece no terminal (segurando crtrl) para acessar o servidor, ou colar o endereço em seu navegador para acessá-lo. Caso deseje utilizar outra porta, antes do primeiro comando, troque a variável `porta` no arquivo `server.js` pelo valor desejado, e também altere no comando anterior.
+
+Você também pode usar `curl` para pegar as respostas do servidor. No terminal, use o comando
+```bash
+curl http://localhost:3000/parametro
+```
+para receber a resposta do servidor em relação ao parâmetro de URL `parametro`.
+
+Na pasta do projeto, use o seguinte comando no terminal
+```bash
+ctrl+C
+```
+para parar o servidor (talvez seja necessário executar o comando duas vezes).
+
+## Usando Apenas o Node.js
 
 Na pasta do projeto, use o seguinte comando no terminal
 ```bash
@@ -31,7 +58,13 @@ Na pasta do projeto, use o seguinte comando no terminal
 ```bash
 npm run server
 ```
-para iniciar o servidor, que irá escutar na porta `3000`. Você pode clicar no link que aparece no terminal (segurando crtrl) para acessar o servidor, ou colar o endereço em seu navegador para acessá-lo. Caso deseja utilizar outra porta, basta informar o valor deejado na variável `porta`, no arquivo `server.js`.
+para iniciar o servidor, que irá escutar na porta `3000`. Você pode clicar no link que aparece no terminal (segurando crtrl) para acessar o servidor, ou colar o endereço em seu navegador para acessá-lo. Caso deseje utilizar outra porta, basta informar o valor desejado na variável `porta`, no arquivo `server.js`.
+
+Você também pode usar `curl` para pegar as respostas do servidor. No terminal, use o comando
+```bash
+curl http://localhost:3000/parametro
+```
+para receber a resposta do servidor em relação ao parâmetro de URL `parametro`.
 
 Na pasta do projeto, use o seguinte comando no terminal
 ```bash
@@ -39,7 +72,13 @@ crtl+C
 ```
 para parar o servidor.
 
-# Usando o Servidor
+Na pasta do projeto, use o seguinte comando no terminal
+```bash
+npm test
+```
+para rodar os testes unitários.
+
+## Exemplos de Uso
 
 Ao acessar `http://localhost:3000/1`, o servidor retorna
 ```
@@ -56,12 +95,6 @@ Ao acessar `http://localhost:3000/94587`, o servidor retorna
 { "extenso": "noventa e quatro mil quinhentos e oitenta e sete" }
 ```
 
-Na pasta do projeto, use o seguinte comando no terminal
-```bash
-npm test
-```
-para rodar os testes unitários.
-
 # Sobre o Desenvolvimento
 
 Para o desafio, eu precisava criar um servidor HTTP, com a linguagem da minha preferência, em até 7 dias que, para cada requisição GET, retornasse um arquivo JSON com chave extenso e valor o número inteiro escrito por extenso (contido no intervalo [-99999, 99999]), enviado como parâmetro de URL.
@@ -74,9 +107,12 @@ Eu quis segui o padrão do *gitflow* para o projeto, mas acabei fazendo um `merg
 
 Para a parte de testes unitários, usei [Jest] junto com [Sucrase] (para poder usar import/export). Não havia trabalhado com testes unitários em JavaScript antes, escolhi o Jest por ser o mais indicado nas pesquisas que fiz.
 
+Dei a possibilidade do usuário usar [Docker] para instalação e uso do projeto. Foi minha primeira vez que eu o utilizei, talvez pudesse ter feito algo melhor em relação a isto (além de fornecer uma maneira do usuários rodar os testes unitários, o usando).
+
 [Node.js]: https://nodejs.org/
 [JavaScript]: https://www.javascript.com/
 [Python]: https://www.python.org/
 [Jest]: https://jestjs.io/en/
 [Sucrase]: https://sucrase.io/
 [FastAPI]: https://fastapi.tiangolo.com/
+[Docker]: https://www.docker.com/
