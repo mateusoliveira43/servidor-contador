@@ -64,7 +64,7 @@ export default class NumeroPorExtenso {
 
   retornaRespostaConversao() {
     const checagem = this.parametro.match(/^(-?\d{1,5})$/);
-    if (!checagem) return false;
+    if (!checagem) return false; // retornar mensagem explicando o erro
     this.converteNumeroParaExtenso();
     return this.numeroPorExtenso;
   }

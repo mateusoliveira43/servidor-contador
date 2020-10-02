@@ -31,5 +31,8 @@
     "transform": {
       ".(js|jsx|ts|tsx)": "@sucrase/jest-plugin"
     }
+  },
+  "dependencies": {
+    "express": "^4.17.1"
   }
 }
