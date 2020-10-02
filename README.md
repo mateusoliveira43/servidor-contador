@@ -4,14 +4,15 @@ Servidor HTTP utilizando a linguagem [JavaScript] (juntamente com o [Node.js]) q
 
 # Tarefas
 
-- [X] Usar *gitflow* para subir as alterações (enviar alterações para o ramo desenvolvimento e fazer merge com a master)
+- [X] Usar *gitflow* para subir as alterações (enviar todas as alterações para o ramo desenvolvimento e depois enviar apenas alterações finalizadas para a master)
 - [X] Implementar algoritmo que escreve os números por extenso
 - [X] Implementar o servidor
-- [ ] Enviar mensagens explicativas de erro ao usuário
+- [X] Enviar mensagens explicativas de erro ao usuário
 - [ ] Terminar de escrever a seção "Iniciando o Servidor"
 - [ ] Terminar de escrever a seção "Utlizando o Servidor"
 - [X] Fazer testes unitários
-- [ ] Tratar os erros
+- [ ] Fazer funcionar os testes do servidor
+- [X] Tratar os erros
 - [ ] Revisar o código e aplicar "Clean Code"
 - [ ] Terminar de escrever a seção "Sobre o desenvolvimento"
 - [ ] Usar Docker
@@ -30,7 +31,7 @@ Na pasta do projeto, use o seguinte comando no terminal
 ```bash
 npm run server
 ```
-para iniciar o servidor, que irá escutar na porta 3000. Você pode clicar no link que aparece no terminal para acessar o servidor, ou colar o endereço em seu navegador para acessá-lo.
+para iniciar o servidor, que irá escutar na porta `3000`. Você pode clicar no link que aparece no terminal (segurando crtrl) para acessar o servidor, ou colar o endereço em seu navegador para acessá-lo. Caso deseja utilizar outra porta, basta informar o valor deejado na variável `porta`, no arquivo `server.js`.
 
 Na pasta do projeto, use o seguinte comando no terminal
 ```bash
