@@ -103,7 +103,7 @@ export default class NumeroPorExtenso {
     this.confereDezena();
     this.numeroPorExtenso += 'mil ';
     this.semZerosEsquerda = this.semZerosEsquerda.substring(2);
-    this.checaEMilharCentena();
+    this.numeroPorExtenso += 'e ';
   }
 
   confereDezena() {
@@ -115,15 +115,11 @@ export default class NumeroPorExtenso {
     }
   }
 
-  checaEMilharCentena() {
-    if (this.semZerosEsquerda.match(/\d00/) || this.semZerosEsquerda.match(/0\d{2}/)) this.numeroPorExtenso += 'e ';
-  }
-
   escreveMilhar() {
     if (this.semZerosEsquerda.length !== 4) return;
     this.numeroPorExtenso += this.unidadesMilhar[this.semZerosEsquerda[0]];
     this.semZerosEsquerda = this.semZerosEsquerda.substring(1);
-    this.checaEMilharCentena();
+    this.numeroPorExtenso += 'e ';
   }
 
   escreveCentena() {
