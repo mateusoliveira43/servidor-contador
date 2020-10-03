@@ -15,8 +15,8 @@ Servidor HTTP utilizando a linguagem [JavaScript] (juntamente com o [Node.js]) q
 - [X] Revisar o código e aplicar "Clean Code"
 - [X] Terminar de escrever a seção "Sobre o desenvolvimento"
 - [X] Usar Docker
-- [ ] Permitir acesso da conta da CERTI (seletivo-certi-cdm)
-- [ ] Fazer pull request na branch de desenvolvimento: Correção de Erros
+- [X] Permitir acesso da conta da CERTI (seletivo-certi-cdm)
+- [X] Fazer pull request na branch de desenvolvimento: Correção de Erros
 
 # Iniciando o Projeto e Usando o Servidor
 
