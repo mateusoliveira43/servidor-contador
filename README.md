@@ -12,7 +12,7 @@ Servidor HTTP utilizando a linguagem [JavaScript] (juntamente com o [Node.js]) q
 - [X] Fazer testes unitários
 - [X] Fazer funcionar os testes do servidor
 - [X] Tratar os erros
-- [ ] Revisar o código e aplicar "Clean Code"
+- [X] Revisar o código e aplicar "Clean Code"
 - [X] Terminar de escrever a seção "Sobre o desenvolvimento"
 - [X] Usar Docker
 - [ ] Permitir acesso da conta da CERTI (seletivo-certi-cdm)
@@ -20,15 +20,17 @@ Servidor HTTP utilizando a linguagem [JavaScript] (juntamente com o [Node.js]) q
 
 # Iniciando o Projeto e Usando o Servidor
 
+Para iniciar e usar o projeto, pode-se usar tanto [Docker] ou [Node.js]. Escolha qual prefere e siga uma das seções de uso.
+
 ## Usando Docker
 
 Na pasta do projeto, use o seguinte comando no terminal
 ```bash
 docker build --tag servidor-contador-docker .
 ```
-para criar a imagem do projeto (se você não deu permisão ao usuário root, vai preciar rodar este, e os demais comandos do docker, com sudo na frente deles).
+para criar a imagem do projeto chamada `servidor-contador-docker` (você pode chamá-la como preferir, basta colocar o nome desejado em vez de servidor-contador-docker no comando anterior e nos demais comandos do Docker). Se você não deu permisão ao usuário root, vai preciar rodar o comando anterior, e os demais comandos do Docker, com `sudo` na frente deles.
 
-Na pasta do projeto, use o seguinte comando no terminal
+Use o seguinte comando no terminal
 ```bash
 docker run -p 3000:3000 servidor-contador-docker
 ```
@@ -46,7 +48,13 @@ ctrl+C
 ```
 para parar o servidor (talvez seja necessário executar o comando duas vezes).
 
-## Usando Apenas o Node.js
+Use o seguinte comando no terminal
+```bash
+docker run servidor-contador-docker npm test
+```
+para rodar os testes unitários.
+
+## Usando Node.js
 
 Na pasta do projeto, use o seguinte comando no terminal
 ```bash
@@ -92,7 +100,7 @@ Ao acessar `http://localhost:3000/-1042`, o servidor retorna
 
 Ao acessar `http://localhost:3000/94587`, o servidor retorna
 ```
-{ "extenso": "noventa e quatro mil quinhentos e oitenta e sete" }
+{ "extenso": "noventa e quatro mil e quinhentos e oitenta e sete" }
 ```
 
 # Sobre o Desenvolvimento
@@ -101,13 +109,22 @@ Para o desafio, eu precisava criar um servidor HTTP, com a linguagem da minha pr
 
 Escolhi usar [JavaScript] junto com [Node.js], por achar que a tarefa seria mais simples do que se implementada utilizando [Python], que é a outra linguagem que tenho costume de trabalhar (no caso, usaria o framework [FastAPI] para o desnvolvimento).
 
-Para o algoritmo de escrita do número por extenso, usei expressões regulares para a solução. Deixei que fossem enviados zeros a esquerda (tal que não ultrapasse 5 dígitos), mas fui rigoroso quanto aos sinais. O usuário só pode enviar um sinal de menos (-) (no início do parâmetro da URL). Enviando mais de um, ou sinais de mais (+), é apresentado um erro ao usuário de formato inválido, explicando qual foi o problema. Para evitar colocar (ainda mais) `if`s (minha prioridade foi evitar ifs), minha ideia foi fazer os objetos com as nomenclaturas das ordens dos respectivos dígitos. Outro ponto que vale resaltar, foi quanto as regras gramaticais. Uma em específico que vale a pena ressaltar, é que não se usa “e” entre milhares e centenas, a não ser que o número termine em centenas. Queria ter feito o método `retornaRespostaConversao`, da classe `NumerosPorExtenso`, ser estático, mas o eslint ainda não suporta atributos estáticos (es7).
+Para o algoritmo de escrita do número por extenso, usei expressões regulares para a solução. Deixei que fossem enviados zeros a esquerda (tal que não ultrapasse 5 dígitos), mas fui rigoroso quanto aos sinais. O usuário só pode enviar um sinal de menos (-) (no início do parâmetro da URL). Enviando mais de um, ou sinais de mais (+), é apresentado um erro ao usuário de formato inválido, explicando qual foi o problema. Para evitar colocar (ainda mais) `if`s (minha prioridade foi evitar ifs), minha ideia foi fazer os objetos com as nomenclaturas das ordens dos respectivos dígitos. Queria ter feito o método `retornaRespostaConversao`, da classe `NumerosPorExtenso`, ser estático, mas o eslint ainda não suporta atributos estáticos (es7).
+
+Outro ponto que vale resaltar, foi quanto as regras gramaticais. Uma em específico que vale a pena ressaltar, é que não se usa “e” entre milhares e centenas, a não ser que o número termine em centenas. O algoritmo não obedece essa regra, a pedido do proponente do desafio. Para solucionar o problema bastaria colocar o seguinte método na classe:
+```js
+checaEMilharCentena() {
+    if (!this.numeroSemZerosEsquerda.match(/\d00/) && !this.numeroSemZerosEsquerda.match(/0\d{2}/)) return;
+    this.numeroPorExtenso += 'e ';
+}
+```
+e chamá-lo no final da execução dos métodos `escreveDezenaMilhar` e `escreveMilhar`, e trocando os `mil e `s por `mil `.
 
 Eu quis seguir o padrão do *gitflow* para o projeto, mas acabei fazendo um `merge` da develop na master no começo do projeto ao invés de um `rebase` e `squash`. Após esse erro, comecei a utilizar o sistema de *pull requests* do GitHub.
 
 Para a parte de testes unitários, usei [Jest] junto com [Sucrase] (para poder usar import/export). Não havia trabalhado com testes unitários em JavaScript antes, escolhi o Jest por ser o mais indicado nas pesquisas que fiz.
 
-Dei a possibilidade do usuário usar [Docker] para instalação e uso do projeto. Foi a primeira vez que o utilizei, talvez pudesse ter feito algo melhor em relação a isto (além de fornecer uma maneira do usuário rodar os testes unitários).
+Dei a possibilidade do usuário usar [Docker] para instalação e uso do projeto. Foi a primeira vez que o utilizei, talvez pudesse ter feito algo melhor em relação ao seu uso.
 
 [Node.js]: https://nodejs.org/
 [JavaScript]: https://www.javascript.com/
