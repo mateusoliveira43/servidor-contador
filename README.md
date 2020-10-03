@@ -28,7 +28,7 @@ docker build --tag servidor-contador-docker .
 ```
 para criar a imagem do projeto (se você não deu permisão ao usuário root, vai preciar rodar este, e os demais comandos do docker, com sudo na frente deles).
 
-Na pasta do projeto, use o seguinte comando no terminal
+Use o seguinte comando no terminal
 ```bash
 docker run -p 3000:3000 servidor-contador-docker
 ```
@@ -45,6 +45,12 @@ Na pasta do projeto, use o seguinte comando no terminal
 ctrl+C
 ```
 para parar o servidor (talvez seja necessário executar o comando duas vezes).
+
+Use o seguinte comando no terminal
+```bash
+docker run servidor-contador-docker npm test
+```
+para rodar os testes unitários.
 
 ## Usando Apenas o Node.js
 
@@ -107,7 +113,7 @@ Eu quis seguir o padrão do *gitflow* para o projeto, mas acabei fazendo um `mer
 
 Para a parte de testes unitários, usei [Jest] junto com [Sucrase] (para poder usar import/export). Não havia trabalhado com testes unitários em JavaScript antes, escolhi o Jest por ser o mais indicado nas pesquisas que fiz.
 
-Dei a possibilidade do usuário usar [Docker] para instalação e uso do projeto. Foi a primeira vez que o utilizei, talvez pudesse ter feito algo melhor em relação a isto (além de fornecer uma maneira do usuário rodar os testes unitários).
+Dei a possibilidade do usuário usar [Docker] para instalação e uso do projeto. Foi a primeira vez que o utilizei, talvez pudesse ter feito algo melhor em relação ao seu uso.
 
 [Node.js]: https://nodejs.org/
 [JavaScript]: https://www.javascript.com/
