@@ -51,34 +51,34 @@ const testesErro = {
   '1a': mensagemErro + erroCaracter,
 };
 
-Object.entries(testesSucesso).forEach(([entrada, saida]) => {
-  test(`passando "${entrada}" como parametro, deve retornar status 200 e { "extenso": "${saida}"}`, () => {
+Object.entries(testesSucesso).forEach(([parametro, numeroPorExtenso]) => {
+  test(`passando "${parametro}" como parametro, deve retornar status 200 e { "extenso": "${numeroPorExtenso}"}`, () => {
     const req = mockRequest(
       {},
-      entrada,
+      parametro,
       {},
     );
     const res = mockResponse();
     retornaRespostaServidor(req, res);
     expect(res.status).toHaveBeenCalledWith(200);
     expect(res.json).toHaveBeenCalledWith({
-      extenso: saida,
+      extenso: numeroPorExtenso,
     });
   });
 });
 
-Object.entries(testesErro).forEach(([entrada, saida]) => {
-  test(`passando "${entrada}" como parametro, deve retornar status 422 e { "extenso": "${saida}"}`, () => {
+Object.entries(testesErro).forEach(([parametro, mensagemDeErro]) => {
+  test(`passando "${parametro}" como parametro, deve retornar status 422 e { "extenso": "${mensagemDeErro}"}`, () => {
     const req = mockRequest(
       {},
-      entrada,
+      parametro,
       {},
     );
     const res = mockResponse();
     retornaRespostaServidor(req, res);
     expect(res.status).toHaveBeenCalledWith(422);
     expect(res.json).toHaveBeenCalledWith({
-      extenso: saida,
+      extenso: mensagemDeErro,
     });
   });
 });

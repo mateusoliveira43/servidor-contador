@@ -1,19 +1,19 @@
 export default class NumeroPorExtenso {
-  constructor(parametroURL) {
-    this.parametro = parametroURL;
-    this.numero = Number(parametroURL);
-    this.semZerosEsquerda = String(this.numero);
-    this.numeroPorExtenso = '';
+  constructor(parametro) {
+    this.parametro = parametro;
+    this.numero = 0;
+    this.numeroSemZerosEsquerda = '';
+    this.numeroPorExtenso = 'zero';
     this.unidadesMilhar = {
-      9: 'nove mil ',
-      8: 'oito mil ',
-      7: 'sete mil ',
-      6: 'seis mil ',
-      5: 'cinco mil ',
-      4: 'quatro mil ',
-      3: 'três mil ',
-      2: 'dois mil ',
-      1: 'mil ',
+      9: 'nove mil e ',
+      8: 'oito mil e ',
+      7: 'sete mil e ',
+      6: 'seis mil e ',
+      5: 'cinco mil e ',
+      4: 'quatro mil e ',
+      3: 'três mil e ',
+      2: 'dois mil e ',
+      1: 'mil e ',
     };
     this.centenas = {
       9: 'novecentos e ',
@@ -65,15 +65,19 @@ export default class NumeroPorExtenso {
   retornaRespostaConversao() {
     const checagem = this.parametro.match(/^(-?\d{1,5})$/);
     if (!checagem) return false;
+    this.converteParametro();
     this.converteNumeroParaExtenso();
     return this.numeroPorExtenso;
   }
 
+  converteParametro() {
+    this.numero = Number(this.parametro);
+    this.numeroSemZerosEsquerda = String(this.numero);
+  }
+
   converteNumeroParaExtenso() {
-    if (!this.numero) {
-      this.numeroPorExtenso = 'zero';
-      return;
-    }
+    if (!this.numero) return;
+    this.numeroPorExtenso = '';
 
     this.checaNumeroNegativo();
 
@@ -83,70 +87,68 @@ export default class NumeroPorExtenso {
     this.escreveDezena();
     this.escreveUnidade();
 
+    this.checaEsNoMeio();
     this.numeroPorExtenso = this.numeroPorExtenso.trim();
-
     this.checaENoFinal();
-    this.checaENoFinal();
-    this.numeroPorExtenso = this.numeroPorExtenso.replace(' e mil', ' mil');
-    this.numeroPorExtenso = this.numeroPorExtenso.replace(' e e ', ' e ');
   }
 
   checaNumeroNegativo() {
-    if (this.semZerosEsquerda.match(/-/)) {
-      this.numeroPorExtenso += 'menos ';
-      this.semZerosEsquerda = this.semZerosEsquerda.substring(1);
-    }
+    if (!this.numeroSemZerosEsquerda.match(/-/)) return;
+    this.numeroPorExtenso += 'menos ';
+    this.numeroSemZerosEsquerda = this.numeroSemZerosEsquerda.substring(1);
   }
 
   escreveDezenaMilhar() {
-    if (this.semZerosEsquerda.length !== 5) return;
+    if (this.numeroSemZerosEsquerda.length !== 5) return;
     this.confereDezena();
-    this.numeroPorExtenso += 'mil ';
-    this.semZerosEsquerda = this.semZerosEsquerda.substring(2);
-    this.numeroPorExtenso += 'e ';
+    this.numeroPorExtenso += 'mil e ';
+    this.numeroSemZerosEsquerda = this.numeroSemZerosEsquerda.substring(2);
   }
 
   confereDezena() {
-    if (this.semZerosEsquerda[0] === '1') {
-      this.numeroPorExtenso += this.dezenas[this.semZerosEsquerda.slice(0, 2)];
+    if (this.numeroSemZerosEsquerda[0] === '1') {
+      this.numeroPorExtenso += this.dezenas[this.numeroSemZerosEsquerda.slice(0, 2)];
     } else {
-      this.numeroPorExtenso += this.dezenas[this.semZerosEsquerda[0]];
-      this.numeroPorExtenso += this.unidades[this.semZerosEsquerda[1]];
+      this.numeroPorExtenso += this.dezenas[this.numeroSemZerosEsquerda[0]];
+      this.numeroPorExtenso += this.unidades[this.numeroSemZerosEsquerda[1]];
     }
   }
 
   escreveMilhar() {
-    if (this.semZerosEsquerda.length !== 4) return;
-    this.numeroPorExtenso += this.unidadesMilhar[this.semZerosEsquerda[0]];
-    this.semZerosEsquerda = this.semZerosEsquerda.substring(1);
-    this.numeroPorExtenso += 'e ';
+    if (this.numeroSemZerosEsquerda.length !== 4) return;
+    this.numeroPorExtenso += this.unidadesMilhar[this.numeroSemZerosEsquerda[0]];
+    this.numeroSemZerosEsquerda = this.numeroSemZerosEsquerda.substring(1);
   }
 
   escreveCentena() {
-    if (this.semZerosEsquerda.length !== 3) return;
-    if (this.semZerosEsquerda === '100') {
+    if (this.numeroSemZerosEsquerda.length !== 3) return;
+    if (this.numeroSemZerosEsquerda === '100') {
       this.numeroPorExtenso += 'cem';
-      this.semZerosEsquerda = '';
+      this.numeroSemZerosEsquerda = '';
       return;
     }
-    this.numeroPorExtenso += this.centenas[this.semZerosEsquerda[0]];
-    this.semZerosEsquerda = this.semZerosEsquerda.substring(1);
+    this.numeroPorExtenso += this.centenas[this.numeroSemZerosEsquerda[0]];
+    this.numeroSemZerosEsquerda = this.numeroSemZerosEsquerda.substring(1);
   }
 
   escreveDezena() {
-    if (this.semZerosEsquerda.length !== 2) return;
+    if (this.numeroSemZerosEsquerda.length !== 2) return;
     this.confereDezena();
-    this.semZerosEsquerda = '';
+    this.numeroSemZerosEsquerda = '';
   }
 
   escreveUnidade() {
-    if (this.semZerosEsquerda.length !== 1) return;
-    this.numeroPorExtenso += this.unidades[this.semZerosEsquerda[0]];
+    if (this.numeroSemZerosEsquerda.length !== 1) return;
+    this.numeroPorExtenso += this.unidades[this.numeroSemZerosEsquerda[0]];
+  }
+
+  checaEsNoMeio() {
+    this.numeroPorExtenso = this.numeroPorExtenso.replace(' e mil', ' mil');
+    this.numeroPorExtenso = this.numeroPorExtenso.replace(' e e', ' e');
   }
 
   checaENoFinal() {
-    if (this.numeroPorExtenso.match(/ e$/)) {
-      this.numeroPorExtenso = this.numeroPorExtenso.slice(0, -2);
-    }
+    if (!this.numeroPorExtenso.match(/ e$/)) return;
+    this.numeroPorExtenso = this.numeroPorExtenso.slice(0, -2);
   }
 }

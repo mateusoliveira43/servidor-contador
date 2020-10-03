@@ -34,9 +34,9 @@ const testes = {
   '1a': false,
 };
 
-Object.entries(testes).forEach(([entrada, saida]) => {
-  const numeroPorExtenso = new NumeroPorExtenso(entrada);
-  test(`passando "${entrada}" como parametro, deve retornar "${saida}"`, () => {
-    expect(numeroPorExtenso.retornaRespostaConversao()).toBe(saida);
+Object.entries(testes).forEach(([parametro, resposta]) => {
+  const numeroPorExtenso = new NumeroPorExtenso(parametro);
+  test(`passando "${parametro}" como parametro, deve retornar "${resposta}"`, () => {
+    expect(numeroPorExtenso.retornaRespostaConversao()).toBe(resposta);
   });
 });

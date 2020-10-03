@@ -12,7 +12,7 @@ Servidor HTTP utilizando a linguagem [JavaScript] (juntamente com o [Node.js]) q
 - [X] Fazer testes unitários
 - [X] Fazer funcionar os testes do servidor
 - [X] Tratar os erros
-- [ ] Revisar o código e aplicar "Clean Code"
+- [X] Revisar o código e aplicar "Clean Code"
 - [X] Terminar de escrever a seção "Sobre o desenvolvimento"
 - [X] Usar Docker
 - [ ] Permitir acesso da conta da CERTI (seletivo-certi-cdm)
@@ -114,10 +114,11 @@ Para o algoritmo de escrita do número por extenso, usei expressões regulares p
 Outro ponto que vale resaltar, foi quanto as regras gramaticais. Uma em específico que vale a pena ressaltar, é que não se usa “e” entre milhares e centenas, a não ser que o número termine em centenas. O algoritmo não obedece essa regra, a pedido do proponente do desafio. Para solucionar o problema bastaria colocar o seguinte método na classe:
 ```js
 checaEMilharCentena() {
-    if (this.semZerosEsquerda.match(/\d00/) || this.semZerosEsquerda.match(/0\d{2}/)) this.numeroPorExtenso += 'e ';
-  }
+    if (!this.numeroSemZerosEsquerda.match(/\d00/) && !this.numeroSemZerosEsquerda.match(/0\d{2}/)) return;
+    this.numeroPorExtenso += 'e ';
+}
 ```
-e chamá-lo no final da execução dos métodos `escreveDezenaMilhar` e `escreveMilhar` (em vez de `this.numeroPorExtenso += 'e ';`).
+e chamá-lo no final da execução dos métodos `escreveDezenaMilhar` e `escreveMilhar`, e trocando os `mil e `s por `mil `.
 
 Eu quis seguir o padrão do *gitflow* para o projeto, mas acabei fazendo um `merge` da develop na master no começo do projeto ao invés de um `rebase` e `squash`. Após esse erro, comecei a utilizar o sistema de *pull requests* do GitHub.
 
