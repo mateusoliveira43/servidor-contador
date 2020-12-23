@@ -1,14 +1,14 @@
 import retornaRespostaServidor, {
   mensagemErro, erroSemDigitos, erroCaracter, erroSinalMais, erroTamanho, erroFormato,
-} from './servidorController';
+} from '../controllers/servidorController';
 
-const mockRequest = (sessionData, parametroURL, body) => ({
-  session: { data: sessionData },
+const simularRequisicao = (dadosSessao, parametroURL, corpoRequisicao) => ({
+  session: { data: dadosSessao },
   params: { numero: parametroURL },
-  body,
+  corpoRequisicao,
 });
 
-const mockResponse = () => {
+const simularResposta = () => {
   const res = {};
   res.status = jest.fn().mockReturnValue(res);
   res.json = jest.fn().mockReturnValue(res);
@@ -53,12 +53,12 @@ const testesErro = {
 
 Object.entries(testesSucesso).forEach(([parametro, numeroPorExtenso]) => {
   test(`passando "${parametro}" como parametro, deve retornar status 200 e { "extenso": "${numeroPorExtenso}"}`, () => {
-    const req = mockRequest(
+    const req = simularRequisicao(
       {},
       parametro,
       {},
     );
-    const res = mockResponse();
+    const res = simularResposta();
     retornaRespostaServidor(req, res);
     expect(res.status).toHaveBeenCalledWith(200);
     expect(res.json).toHaveBeenCalledWith({
@@ -69,12 +69,12 @@ Object.entries(testesSucesso).forEach(([parametro, numeroPorExtenso]) => {
 
 Object.entries(testesErro).forEach(([parametro, mensagemDeErro]) => {
   test(`passando "${parametro}" como parametro, deve retornar status 422 e { "extenso": "${mensagemDeErro}"}`, () => {
-    const req = mockRequest(
+    const req = simularRequisicao(
       {},
       parametro,
       {},
     );
-    const res = mockResponse();
+    const res = simularResposta();
     retornaRespostaServidor(req, res);
     expect(res.status).toHaveBeenCalledWith(422);
     expect(res.json).toHaveBeenCalledWith({

@@ -1,4 +1,4 @@
-import NumeroPorExtenso from './NumeroPorExtenso';
+import NumeroPorExtenso from '../utils/NumeroPorExtenso';
 
 const testes = {
   a: false,
